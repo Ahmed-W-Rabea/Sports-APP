@@ -46,13 +46,13 @@ class _SplashScreenState extends State<SplashScreen>
       await Future.delayed(Duration(milliseconds: 2400), () {});
       // If onboarding has been seen before, navigate to the main screen or home screen.
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => Onbording(),
+        builder: (context) => Homescreen(),
       ));
     } else {
       await Future.delayed(Duration(milliseconds: 2400), () {});
       // If onboarding has not been seen, navigate to the onboarding screen.
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => Homescreen(),
+        builder: (context) => Onbording(),
       ));
 
       // Set the flag to true to indicate that onboarding has been seen.

@@ -96,11 +96,11 @@ flutter:
     - family: mx
       fonts:
         - asset: assets/fonts/first/mx-20230830T094043Z-001/mx/MxRegular-p76qD.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
+        # - asset: fonts/Schyler-Italic.ttf
+    #         style: italic
+    - family: race-sport
+      fonts:
+        - asset: assets\fonts\second\race-sport--20230830T094045Z-001\race-sport-\RaceSport-BWPLV.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

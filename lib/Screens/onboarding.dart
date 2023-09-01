@@ -104,7 +104,7 @@ class _OnbordingState extends State<Onbording> {
                             contents[index].discription,
                             textAlign: TextAlign.center,
                             style: const TextStyle(
-                              fontFamily: 'RaceSport',
+                              fontFamily: 'race-sport',
                               height: 2,
                               fontSize: 15,
                               color: Color.fromARGB(255, 247, 227, 199),
@@ -123,8 +123,8 @@ class _OnbordingState extends State<Onbording> {
                       count: contents.length,
                       effect: const WormEffect(
                         spacing: 16,
-                        dotHeight: 20,
-                        dotWidth: 20,
+                        dotHeight: 15,
+                        dotWidth: 15,
                         dotColor: Color.fromARGB(255, 27, 25, 25),
                         activeDotColor: Color.fromARGB(255, 247, 227, 199),
                       ),
@@ -158,7 +158,7 @@ class _OnbordingState extends State<Onbording> {
                               GradientText(
                                 "Start",
                                 style: const TextStyle(
-                                    fontFamily: 'RaceSport', fontSize: 20),
+                                    fontFamily: 'race-sport', fontSize: 20),
                                 colors: const [
                                   Color.fromARGB(255, 221, 156, 64),
                                   Color.fromARGB(255, 254, 217, 164),
@@ -173,7 +173,7 @@ class _OnbordingState extends State<Onbording> {
                               child: GradientText(
                                 "Skip",
                                 style: const TextStyle(
-                                    fontFamily: 'RaceSport', fontSize: 20),
+                                    fontFamily: 'race-sport', fontSize: 20),
                                 colors: const [
                                   Color.fromARGB(255, 221, 156, 64),
                                   Color.fromARGB(255, 254, 217, 164),
