@@ -34,7 +34,7 @@ class CountriesScreen extends StatelessWidget {
                     MaterialPageRoute<void>(
                       builder: (BuildContext context) => HomeScreen(),
                     ),
-                    ModalRoute.withName('/'),
+                    (route) => false,
                   );
                 },
                 icon: const Icon(Icons.arrow_back_ios),
