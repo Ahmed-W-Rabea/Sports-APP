@@ -10,17 +10,22 @@ class UnbordingContent {
 List<UnbordingContent> contents = [
   UnbordingContent(
       title: 'FOOTBALL',
-      image: 'assets/football.png',
+      image: 'assets/images/3.png',
       discription:
           "Tap on the football section to see hot news and highlights from around the football world. "),
   UnbordingContent(
       title: 'BASKETBALL',
-      image: 'assets/bascket00.jpg',
+      image: 'assets/images/bascket00.jpg',
       discription:
           "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the "),
   UnbordingContent(
       title: 'TENNIS',
-      image: 'assets/tennis.png',
+      image: 'assets/images/tennis.png',
+      discription:
+          "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the "),
+  UnbordingContent(
+      title: 'TENNIS',
+      image: 'assets/images/4.png',
       discription:
           "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the "),
 ];
