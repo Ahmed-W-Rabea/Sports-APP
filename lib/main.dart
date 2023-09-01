@@ -1,9 +1,11 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/Screens/HomeScreen.dart';
 import 'package:flutter_application_1/Screens/Splash_Screen.dart';
+import 'package:flutter_application_1/share/local/cache/cache_helper.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await CacheHelper.init();
   runApp(const MyApp());
 }
 
@@ -12,19 +14,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const ScreenUtilInit(
+      designSize: Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: MaterialApp(
         debugShowCheckedModeBanner: false,
-
-        // Cupertino App
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: SplashScreen()
-
-        // OurFirstScreen(
-        //   title: 'Flutter Demo Home Page',
-        // ),
-        );
+        home: SplashScreen(),
+      ),
+    );
   }
 }
