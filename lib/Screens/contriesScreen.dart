@@ -56,7 +56,7 @@ class CountriesScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 20.h),
+              padding: EdgeInsets.only(top: 20.h, bottom: 10),
               child: Align(
                 alignment: Alignment.topCenter,
                 child: GradientText(
@@ -88,7 +88,7 @@ class CountriesScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(left: 20.w, right: 20.w),
               child: SizedBox(
-                height: 360.h,
+                height: 352.h,
                 child: Expanded(
                   child: GridView.count(
                     crossAxisCount: 3,
@@ -122,8 +122,8 @@ class CountriesScreen extends StatelessWidget {
                               child: Column(
                                 children: [
                                   SizedBox(
-                                    height: 60,
-                                    width: 60,
+                                    height: 50.h,
+                                    width: 50.w,
                                     child: Image.asset(
                                       'assets/images/foot_ball.jpg',
                                     ),
@@ -137,7 +137,7 @@ class CountriesScreen extends StatelessWidget {
                                             offset: Offset(1.0, 1.0),
                                           ),
                                         ],
-                                        fontSize: 10.sp,
+                                        fontSize: 8.sp,
                                         fontFamily: 'RaceSport',
                                         color: Colors.white),
                                   ),

@@ -86,3 +86,11 @@ Future showdialog(int index, context) async {
           },
         );
 }
+
+Widget playerCard() {
+  return Stack(
+    children: [
+      Image.asset('assets/images/player_card.png'),
+    ],
+  );
+}

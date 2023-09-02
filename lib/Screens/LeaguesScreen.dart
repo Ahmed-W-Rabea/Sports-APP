@@ -99,7 +99,7 @@ class LeaguesScreen extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 15),
                           child: Container(
-                            height: 50,
+                            height: 45.h,
                             decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(8)),
@@ -128,19 +128,19 @@ class LeaguesScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     '${i + 1} -',
-                                    style: const TextStyle(shadows: [
+                                    style: TextStyle(shadows: const [
                                       Shadow(
                                         color: Colors.black,
                                         offset: Offset(1.0, 1.0),
                                       ),
-                                    ], fontSize: 10, fontFamily: 'RaceSport'),
+                                    ], fontSize: 9.sp, fontFamily: 'RaceSport'),
                                   ),
                                   const Spacer(
                                     flex: 1,
                                   ),
                                   SizedBox(
-                                    height: 45,
-                                    width: 45,
+                                    height: 45.h,
+                                    width: 45.w,
                                     child: Image.asset(
                                       'assets/images/foot_ball.jpg',
                                     ),
@@ -148,26 +148,26 @@ class LeaguesScreen extends StatelessWidget {
                                   const Spacer(
                                     flex: 1,
                                   ),
-                                  const Text(
+                                  Text(
                                     'league name',
-                                    style: TextStyle(shadows: [
+                                    style: TextStyle(shadows: const [
                                       Shadow(
                                         color: Colors.black,
                                         offset: Offset(1.0, 1.0),
                                       ),
-                                    ], fontSize: 10, fontFamily: 'RaceSport'),
+                                    ], fontSize: 9.sp, fontFamily: 'RaceSport'),
                                   ),
                                   const Spacer(
                                     flex: 8,
                                   ),
-                                  const Text(
+                                  Text(
                                     'text',
-                                    style: TextStyle(shadows: [
+                                    style: TextStyle(shadows: const [
                                       Shadow(
                                         color: Colors.black,
                                         offset: Offset(1.0, 1.0),
                                       ),
-                                    ], fontSize: 10, fontFamily: 'RaceSport'),
+                                    ], fontSize: 9.sp, fontFamily: 'RaceSport'),
                                   ),
                                 ],
                               ),
