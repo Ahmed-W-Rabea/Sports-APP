@@ -113,7 +113,7 @@ class Teams extends StatelessWidget {
                                 context,
                                 MaterialPageRoute<void>(
                                   builder: (BuildContext context) =>
-                                      const PlayersScreen(),
+                                      PlayersScreen(),
                                 ),
                               );
                             },
