@@ -89,30 +89,46 @@ class HomeScreen extends StatelessWidget {
                   color: Colors.white),
             ),
           ),
-          CarouselSlider.builder(
-              itemCount: 3,
-              itemBuilder:
-                  (BuildContext context, int itemIndex, int pageViewIndex) =>
-                      Container(
-                        height: 220.h,
-                        width: 270.w,
-                        decoration: BoxDecoration(
-                            image: const DecorationImage(
-                                image: AssetImage('assets/images/Ronaldo.jpg'),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(15),
-                            color: Colors.white),
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 30, left: 15),
-                          child: SingleChildScrollView(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                GradientText(
-                                  'CR7',
+          Padding(
+            padding: EdgeInsets.only(top: 20.h),
+            child: CarouselSlider.builder(
+                itemCount: 3,
+                itemBuilder: (BuildContext context, int itemIndex,
+                        int pageViewIndex) =>
+                    Container(
+                      height: 220.h,
+                      width: 270.w,
+                      decoration: BoxDecoration(
+                          image: const DecorationImage(
+                              image: AssetImage('assets/images/Ronaldo.jpg'),
+                              fit: BoxFit.cover),
+                          borderRadius: BorderRadius.circular(15),
+                          color: Colors.white),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 30, left: 15),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              GradientText(
+                                'CR7',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 27.sp,
+                                  fontFamily: 'RaceSport',
+                                ),
+                                colors: const [
+                                  Color.fromARGB(255, 221, 156, 64),
+                                  Color.fromARGB(255, 254, 217, 164),
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 16),
+                                child: GradientText(
+                                  'one of\nthe legend\nplayers in the\nworld...',
                                   style: TextStyle(
                                     color: Colors.white,
-                                    fontSize: 27.sp,
+                                    fontSize: 19.sp,
                                     fontFamily: 'RaceSport',
                                   ),
                                   colors: const [
@@ -120,58 +136,42 @@ class HomeScreen extends StatelessWidget {
                                     Color.fromARGB(255, 254, 217, 164),
                                   ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 16),
-                                  child: GradientText(
-                                    'one of\nthe legend\nplayers in the\nworld...',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 19.sp,
-                                      fontFamily: 'RaceSport',
-                                    ),
-                                    colors: const [
-                                      Color.fromARGB(255, 221, 156, 64),
-                                      Color.fromARGB(255, 254, 217, 164),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-              options: CarouselOptions(
-                height: 220,
-                viewportFraction: 0.75,
-                initialPage: 0,
-                enableInfiniteScroll: true,
-                reverse: false,
-                autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 3),
-                autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enlargeCenterPage: true,
-                enlargeFactor: 0.3,
-                scrollDirection: Axis.horizontal,
-              )),
+                    ),
+                options: CarouselOptions(
+                  height: 220,
+                  viewportFraction: 0.75,
+                  initialPage: 0,
+                  enableInfiniteScroll: true,
+                  reverse: false,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 3),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enlargeCenterPage: true,
+                  enlargeFactor: 0.3,
+                  scrollDirection: Axis.horizontal,
+                )),
+          ),
           Padding(
-            padding: const EdgeInsets.only(top: 40),
-            child: SizedBox(
-              height: 35.h,
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Text(
-                  '- Catigories -',
-                  style: TextStyle(
-                      fontSize: 13.sp,
-                      fontFamily: 'RaceSport',
-                      color: Colors.white),
-                ),
+            padding: EdgeInsets.only(top: 28.h),
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Text(
+                '- Catigories -',
+                style: TextStyle(
+                    fontSize: 13.sp,
+                    fontFamily: 'RaceSport',
+                    color: Colors.white),
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
+            padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h),
             child: SizedBox(
               height: 283.h,
               child: GridView.count(
