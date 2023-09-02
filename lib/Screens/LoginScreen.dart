@@ -172,7 +172,7 @@ class loginscreenState extends State<loginscreen> {
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Homescreen()));
+                        MaterialPageRoute(builder: (context) => HomeScreen()));
 
                     /*  if (_formKey.currentState!.validate()) {                      Navigator.push(context,MaterialPageRoute (                        builder: (BuildContext context) =>  categoryscreen(),                      ),                      );                    }                                                */
                   },
