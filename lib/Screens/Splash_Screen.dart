@@ -87,7 +87,7 @@ class _SplashScreenState extends State<SplashScreen>
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.3,
               ),
-              Image.asset("assets/images/eagle.png"),
+              Image.asset("assets/images/logo.png"),
               const Text(
                 "SPORTIANO",
                 style: TextStyle(
