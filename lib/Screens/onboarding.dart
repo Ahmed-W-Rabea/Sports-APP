@@ -127,8 +127,8 @@ class _OnbordingState extends State<Onbording> {
                       count: contents.length,
                       effect: const WormEffect(
                         spacing: 16,
-                        dotHeight: 20,
-                        dotWidth: 20,
+                        dotHeight: 15,
+                        dotWidth: 15,
                         dotColor: Color.fromARGB(255, 27, 25, 25),
                         activeDotColor: Color.fromARGB(255, 247, 227, 199),
                       ),
