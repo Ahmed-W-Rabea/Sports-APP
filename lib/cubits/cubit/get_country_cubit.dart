@@ -9,21 +9,21 @@ part 'get_country_state.dart';
 class GetCountryCubit extends Cubit<GetCountryState> {
   GetCountryCubit() : super(GetCountryInitial());
 
-  GetCountry newsRepo = GetCountry();
+  GetCountry getCountryService = GetCountry();
 
-  getNews() async {
-    emit(GetCountriesLoading());
+  getCountry() async {
+    emit(GetCountryLoading());
 
     try {
-      await newsRepo.getCountry().then((value) {
+      await getCountryService.getCountry().then((value) {
         if (value != null) {
-          emit(GetNewsSuccess(response: value));
+          emit(GetCountrySuccess(response: value));
         } else {
-          emit(GetNewsError());
+          emit(GetCountryError());
         }
       });
     } catch (error) {
-      emit(GetNewsError());
+      emit(GetCountryError());
     }
   }
 }

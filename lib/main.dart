@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/Splash_Screen.dart';
 import 'package:flutter_application_1/share/local/cache/cache_helper.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'cubits/cubit/get_country_cubit.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -20,13 +22,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ScreenUtilInit(
-      designSize: Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<GetCountryCubit>(
+          create: (BuildContext context) => GetCountryCubit()..getCountry(),
+        ),
+      ],
+      child: const ScreenUtilInit(
+        designSize: Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: SplashScreen(),
+        ),
       ),
     );
   }
