@@ -5,11 +5,11 @@ sealed class GetCountryState {}
 
 final class GetCountryInitial extends GetCountryState {}
 
-final class GetCountriesLoading extends GetCountryState {}
+final class GetCountryLoading extends GetCountryState {}
 
-final class GetNewsSuccess extends GetCountryState {
+final class GetCountrySuccess extends GetCountryState {
   final GetNewCountryModel response;
-  GetNewsSuccess({required this.response});
+  GetCountrySuccess({required this.response});
 }
 
-final class GetNewsError extends GetCountryState {}
+final class GetCountryError extends GetCountryState {}

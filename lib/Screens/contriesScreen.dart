@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/cubits/cubit/get_country_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -86,71 +88,96 @@ class CountriesScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 20.w, right: 20.w),
-                child: SizedBox(
-                  height: 352.h,
-                  child: Expanded(
-                    child: GridView.count(
-                      crossAxisCount: 3,
-                      childAspectRatio: 5 / 4,
-                      crossAxisSpacing: 17,
-                      mainAxisSpacing: 17,
-                      children: [
-                        for (int i = 0; i < 21; i++)
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute<void>(
-                                  builder: (BuildContext context) =>
-                                      const LeaguesScreen(),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(8)),
-                                gradient: LinearGradient(
-                                  colors: [
-                                    Color.fromARGB(255, 221, 156, 64),
-                                    Color.fromARGB(255, 254, 217, 164),
-                                  ],
-                                ),
-                              ),
-                              child: SingleChildScrollView(
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 50.h,
-                                      width: 50.w,
-                                      child: Image.asset(
-                                        'assets/images/foot_ball.jpg',
+              BlocBuilder<GetCountryCubit, GetCountryState>(
+                builder: (context, state) {
+                  if (state is GetCountryLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (state is GetCountrySuccess) {
+                    return Padding(
+                      padding: EdgeInsets.only(left: 20.w, right: 20.w),
+                      child: SizedBox(
+                        height: 352.h,
+                        child: Expanded(
+                          child: GridView.count(
+                            crossAxisCount: 3,
+                            childAspectRatio: 5 / 4,
+                            crossAxisSpacing: 17,
+                            mainAxisSpacing: 17,
+                            children: [
+                              for (int i = 0;
+                                  i < state.response.result!.length;
+                                  i++)
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute<void>(
+                                        builder: (BuildContext context) =>
+                                            const LeaguesScreen(),
+                                      ),
+                                    );
+                                  },
+                                  child: Container(
+                                    decoration: const BoxDecoration(
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(8)),
+                                      gradient: LinearGradient(
+                                        colors: [
+                                          Color.fromARGB(255, 221, 156, 64),
+                                          Color.fromARGB(255, 254, 217, 164),
+                                        ],
                                       ),
                                     ),
-                                    Text(
-                                      'flag name',
-                                      style: TextStyle(
-                                          shadows: const [
-                                            Shadow(
-                                              color: Colors.black,
-                                              offset: Offset(1.0, 1.0),
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        children: [
+                                          Container(
+                                            height: 50.h,
+                                            width: 50.w,
+                                            decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                image: NetworkImage(
+                                                  state.response.result?[i]
+                                                          .countryLogo ??
+                                                      'https://media.istockphoto.com/id/1264074047/vector/breaking-news-background.jpg?s=612x612&w=0&k=20&c=C5BryvaM-X1IiQtdyswR3HskyIZCqvNRojrCRLoTN0Q=',
+                                                ),
+                                                fit: BoxFit.fitWidth,
+                                              ),
                                             ),
-                                          ],
-                                          fontSize: 8.sp,
-                                          fontFamily: 'RaceSport',
-                                          color: Colors.white),
+                                          ),
+                                          Text(
+                                            state.response.result?[i]
+                                                    .countryName ??
+                                                'null name',
+                                            style: TextStyle(
+                                                shadows: const [
+                                                  Shadow(
+                                                    color: Colors.black,
+                                                    offset: Offset(1.0, 1.0),
+                                                  ),
+                                                ],
+                                                fontSize: 8.sp,
+                                                fontFamily: 'RaceSport',
+                                                color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          )
-                      ],
-                    ),
-                  ),
-                ),
+                                  ),
+                                )
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  } else {
+                    return const Center(
+                      child: Text("Somethinge went wrone"),
+                    );
+                  }
+                },
               ),
             ],
           ),
