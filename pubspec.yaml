@@ -93,7 +93,7 @@ flutter:
       fonts:
         - asset: assets/fonts/mx/MxRegular-p76qD.ttf
         - asset: assets/fonts/mx/MxRegular-qZJ7r.ttf
-  #         style: italic
+    #         style: italic
     - family: RaceSport
       fonts:
         - asset: assets/fonts/race-sport-/RaceSport-BWPLV.ttf
