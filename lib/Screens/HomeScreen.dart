@@ -9,6 +9,7 @@ import '../used widgets/widgets.dart';
 // ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
+  static const route = '/notification-screen';
 
   List catigoryName = ['Football', 'BasketBall', 'Cricket', 'Tennis'];
   List catigoryPhotoUrl = [
@@ -20,6 +21,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final message = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       appBar: GradientAppBar(
         automaticallyImplyLeading: false,
