@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 List name = [
@@ -10,18 +11,18 @@ List name = [
   "Yellow cards num:",
   "Red cards num:",
   "Goals:",
-  "Assits:",
+  "Assist:",
 ];
-List data = [
+List<dynamic> data = [
+  "salah",
+  "3",
   "salah",
   "salah",
-  "salah",
-  "salah",
-  "salah",
-  "salah",
-  "salah",
-  "salah",
-  "salah",
+  "55",
+  "3",
+  "4",
+  "5",
+  "7",
 ];
 
 Future showdialog2(int index, context) async {
@@ -47,7 +48,11 @@ Future showdialog2(int index, context) async {
         ),
         content: Column(
           children: [
-            Image.asset("asset/logo2.png"),
+            Image(
+              image: NetworkImage(
+                  'https://tse2.mm.bing.net/th?id=OIP.jp6ZzlE7irF8mmaZDk-vCwHaIU&pid=Api&P=0&h=220'),
+              height: 100,
+            ),
             for (int i = 0; i < 9; i++)
               Row(
                 children: [
@@ -90,6 +95,20 @@ Future showdialog2(int index, context) async {
               ),
             ),
           ),
+          Center(
+            child: TextButton(
+                onPressed: () async {
+                  await Share.share("follow this player : salah , liverpool");
+                },
+                child: Text(
+                  "Share",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 247, 176, 78),
+                  ),
+                )),
+          )
         ],
       );
     },

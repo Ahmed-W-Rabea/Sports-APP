@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Screens/playerinfo.dart';
 import 'package:flutter_application_1/used%20widgets/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -132,7 +133,9 @@ class PlayersScreen extends StatelessWidget {
                         children: [
                           for (int i = 0; i < 21; i++)
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                showdialog2(i, context);
+                              },
                               child: playerCard(),
                             )
                         ],

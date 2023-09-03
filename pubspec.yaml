@@ -50,6 +50,8 @@ dependencies:
   firebase_auth: ^4.9.0
   google_sign_in: ^6.1.5
   flutter_screenutil: ^5.9.0
+  otp: ^3.1.4
+  share_plus: ^2.1.1
 
 dev_dependencies:
   flutter_test:
