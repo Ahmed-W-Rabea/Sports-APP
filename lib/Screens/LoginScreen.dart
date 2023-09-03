@@ -24,7 +24,7 @@ class loginscreenState extends State<loginscreen> {
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text('Log in'),
+          title: const Text('Log in'),
           flexibleSpace: Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
@@ -54,10 +54,10 @@ class loginscreenState extends State<loginscreen> {
                 ),
               ),
             ),
-            Align(
+            const Align(
               alignment: Alignment.topCenter,
               child: Padding(
-                padding: const EdgeInsets.only(top: 50),
+                padding: EdgeInsets.only(top: 50),
                 child: Text(
                   'Log in',
                   style: TextStyle(
@@ -69,7 +69,7 @@ class loginscreenState extends State<loginscreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 100, left: 20),
+              padding: const EdgeInsets.only(top: 100, left: 20),
               child: SizedBox(
                 width: 320,
                 child: TextFormField(
@@ -86,7 +86,7 @@ class loginscreenState extends State<loginscreen> {
                     }
                     return null;
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: 'User Name',
                     labelStyle: TextStyle(
                         color: Colors
@@ -107,7 +107,7 @@ class loginscreenState extends State<loginscreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 180, left: 20),
+              padding: const EdgeInsets.only(top: 180, left: 20),
               child: SizedBox(
                 width: 320,
                 child: TextFormField(
@@ -123,7 +123,7 @@ class loginscreenState extends State<loginscreen> {
                     }
                     return 'wrong way to write password';
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     prefixIcon: Icon(
                       Icons.lock,
                       color: Colors.amber,
@@ -191,8 +191,8 @@ class loginscreenState extends State<loginscreen> {
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 400, left: 100),
+            const Padding(
+              padding: EdgeInsets.only(top: 400, left: 100),
               child: Text(
                 'Other options for logging in',
                 style: TextStyle(
