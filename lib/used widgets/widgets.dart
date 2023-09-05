@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Screens/LoginScreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../Screens/contriesScreen.dart';
+import '../resources/auth_methods.dart';
 
 Widget container(
     {required String name,
@@ -240,5 +243,73 @@ Future showPlayerAnaliticsdialog(int index, context) async {
         ],
       );
     },
+  );
+}
+
+Widget drawer(context) {
+  return Drawer(
+    backgroundColor: Color.fromARGB(255, 13, 13, 16),
+    child: ListView(
+      padding: const EdgeInsets.all(0),
+      children: [
+        SizedBox(
+          height: 100.h,
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.phone_android,
+            color: Colors.white,
+          ),
+          title: Text(
+            userphoneController.text,
+            style: TextStyle(color: Colors.white),
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.person,
+            color: Colors.white,
+          ),
+          title: Text(
+            FirebaseAuth.instance.currentUser?.displayName.toString() ?? "",
+            style: TextStyle(color: Colors.white),
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.email,
+            color: Colors.white,
+          ),
+          title: Text(
+            FirebaseAuth.instance.currentUser?.email.toString() ?? "",
+            style: TextStyle(color: Colors.white),
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.logout,
+            color: Colors.white,
+          ),
+          title: const Text(
+            'LogOut',
+            style: TextStyle(color: Colors.white),
+          ),
+          onTap: () async {
+            AuthMethods().signOut();
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => loginSceren()));
+          },
+        ),
+      ],
+    ),
   );
 }
