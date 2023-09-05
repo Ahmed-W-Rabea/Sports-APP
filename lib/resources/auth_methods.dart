@@ -15,7 +15,9 @@ class AuthMethods {
   Stream<User?> get user => _auth.authStateChanges();
 
   // Sign in with Google and add user to Firestore
-  Future<bool> signInWithGoogle(BuildContext context) async {
+  Future<bool> signInWithGoogle(
+    BuildContext context,
+  ) async {
     bool isSignedIn = false;
     try {
       // Sign in with Google

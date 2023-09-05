@@ -1,9 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Data/APIModels/fireBaseAPI.dart';
-import 'package:flutter_application_1/Screens/HomeScreen.dart';
+import 'package:flutter_application_1/Screens/LoginScreen.dart';
 import 'package:flutter_application_1/Screens/Splash_Screen.dart';
-import 'package:flutter_application_1/Screens/contriesScreen.dart';
+
+import 'package:flutter_application_1/resources/auth.dart';
 import 'package:flutter_application_1/share/local/cache/cache_helper.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context) => GetCountryCubit()..getCountry(),
         ),
       ],
-      child: const ScreenUtilInit(
+      child: ScreenUtilInit(
         designSize: Size(360, 690),
         minTextAdapt: true,
         splitScreenMode: true,
