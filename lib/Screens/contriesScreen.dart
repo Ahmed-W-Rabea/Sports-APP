@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_application_1/cubits/cubit/get_country_cubit.dart';
 import 'package:flutter_application_1/used%20widgets/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gradient_app_bar/flutter_gradient_app_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
-
 
 import '../cubits/get_country/get_country_cubit.dart';
 
