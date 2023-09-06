@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/cubits/cubit/get_country_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../cubits/get_country/get_country_cubit.dart';
 import 'HomeScreen.dart';
 import 'LeaguesScreen.dart';
 
@@ -115,7 +115,11 @@ class CountriesScreen extends StatelessWidget {
                                       context,
                                       MaterialPageRoute<void>(
                                         builder: (BuildContext context) =>
-                                            const LeaguesScreen(),
+                                            LeaguesScreen(
+                                          index1: i,
+                                          countryKey: state
+                                              .response.result?[i].countryKey,
+                                        ),
                                       ),
                                     );
                                   },

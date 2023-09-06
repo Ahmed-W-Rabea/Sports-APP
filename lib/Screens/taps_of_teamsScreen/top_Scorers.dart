@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../cubits/get_topScorers/get_top_scorers_cubit.dart';
 
 class TopScorers extends StatelessWidget {
   const TopScorers({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var cubit = BlocProvider.of<GetTopScorersCubit>(context);
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -126,9 +130,13 @@ class TopScorers extends StatelessWidget {
                                     Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'player name',
+                                          cubit.response.result?[i]
+                                                  .playerName ??
+                                              'null name',
                                           style: TextStyle(
                                               shadows: const [
                                                 Shadow(
@@ -143,7 +151,9 @@ class TopScorers extends StatelessWidget {
                                           padding:
                                               const EdgeInsets.only(top: 5),
                                           child: Text(
-                                            'player team',
+                                            cubit.response.result?[i]
+                                                    .teamName ??
+                                                'null name',
                                             style: TextStyle(
                                                 shadows: const [
                                                   Shadow(
@@ -161,7 +171,7 @@ class TopScorers extends StatelessWidget {
                                       flex: 7,
                                     ),
                                     Text(
-                                      '2',
+                                      '${cubit.response.result?[i].goals ?? '-'}',
                                       style: TextStyle(
                                           shadows: const [
                                             Shadow(
@@ -176,7 +186,7 @@ class TopScorers extends StatelessWidget {
                                       flex: 3,
                                     ),
                                     Text(
-                                      '2',
+                                      '${cubit.response.result?[i].penaltyGoals ?? '-'}',
                                       style: TextStyle(
                                           shadows: const [
                                             Shadow(
@@ -191,7 +201,7 @@ class TopScorers extends StatelessWidget {
                                       flex: 3,
                                     ),
                                     Text(
-                                      '2',
+                                      '${cubit.response.result?[i].assists ?? '-'}',
                                       style: TextStyle(
                                           shadows: const [
                                             Shadow(
