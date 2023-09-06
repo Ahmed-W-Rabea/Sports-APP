@@ -35,8 +35,7 @@ class LeaguesScreen extends StatelessWidget {
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute<void>(
-                        builder: (BuildContext context) =>
-                            const CountriesScreen(),
+                        builder: (BuildContext context) => CountriesScreen(),
                       ),
                       (route) => false,
                     );

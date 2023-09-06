@@ -329,11 +329,6 @@ class _loginscreenState extends State<loginSceren> {
                         const SizedBox(
                           width: 5,
                         ),
-                        // Image.asset(
-                        //   'assets/images/google.png',
-                        //   height: 20.h,
-                        //   width: 20.w,
-                        // ),
                       ],
                     ),
                   ),

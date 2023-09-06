@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/LoginScreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../Screens/contriesScreen.dart';
@@ -40,7 +41,7 @@ Future showdialog(int index, context) async {
       ? Navigator.push(
           context,
           MaterialPageRoute<void>(
-            builder: (BuildContext context) => const CountriesScreen(),
+            builder: (BuildContext context) => CountriesScreen(),
           ),
         )
       : showDialog(
@@ -240,6 +241,20 @@ Future showPlayerAnaliticsdialog(int index, context) async {
               ),
             ),
           ),
+          Center(
+            child: TextButton(
+                onPressed: () async {
+                  await Share.share("follow this player : salah , liverpool");
+                },
+                child: Text(
+                  "Share",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 247, 176, 78),
+                  ),
+                )),
+          )
         ],
       );
     },
