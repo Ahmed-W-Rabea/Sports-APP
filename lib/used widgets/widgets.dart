@@ -1,10 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:flutter_application_1/Screens/LoginScreen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../Screens/contriesScreen.dart';
 import '../cubits/get_playerAnalytics/get_player_analytics_cubit.dart';
+
+import '../resources/auth_methods.dart';
 
 Widget container(
     {required String name,
@@ -39,7 +45,7 @@ Future showdialog(int index, context) async {
       ? Navigator.push(
           context,
           MaterialPageRoute<void>(
-            builder: (BuildContext context) => const CountriesScreen(),
+            builder: (BuildContext context) => CountriesScreen(),
           ),
         )
       : showDialog(
@@ -383,10 +389,93 @@ Future showPlayerAnaliticsdialog(int index, context) async {
                   ),
                 ),
               ),
-            ],
-          );
-        },
+
+            ),
+          ),
+          Center(
+            child: TextButton(
+                onPressed: () async {
+                  await Share.share("follow this player : salah , liverpool");
+                },
+                child: Text(
+                  "Share",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 247, 176, 78),
+                  ),
+                )),
+          )
+        ],
       );
     },
+  );
+}
+
+Widget drawer(context) {
+  return Drawer(
+    backgroundColor: Color.fromARGB(255, 13, 13, 16),
+    child: ListView(
+      padding: const EdgeInsets.all(0),
+      children: [
+        SizedBox(
+          height: 100.h,
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.phone_android,
+            color: Colors.white,
+          ),
+          title: Text(
+            userphoneController.text,
+            style: TextStyle(color: Colors.white),
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.person,
+            color: Colors.white,
+          ),
+          title: Text(
+            FirebaseAuth.instance.currentUser?.displayName.toString() ?? "",
+            style: TextStyle(color: Colors.white),
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.email,
+            color: Colors.white,
+          ),
+          title: Text(
+            FirebaseAuth.instance.currentUser?.email.toString() ?? "",
+            style: TextStyle(color: Colors.white),
+          ),
+          onTap: () {
+            Navigator.pop(context);
+          },
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.logout,
+            color: Colors.white,
+          ),
+          title: const Text(
+            'LogOut',
+            style: TextStyle(color: Colors.white),
+          ),
+          onTap: () async {
+            AuthMethods().signOut();
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => loginSceren()));
+          },
+        ),
+      ],
+    ),
   );
 }

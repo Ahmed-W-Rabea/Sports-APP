@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_application_1/Screens/HomeScreen.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -43,13 +45,12 @@ class FirebaseApi {
   }
 
   Future initPushNotification() async {
-    await FirebaseMessaging.instance
-        .setForegroundNotificationPresentationOptions(
+    await _firebaseMessageing.setForegroundNotificationPresentationOptions(
       alert: true,
       badge: true,
       sound: true,
     );
-    FirebaseMessaging.instance.getInitialMessage().then(handleMessage);
+    _firebaseMessageing.getInitialMessage().then(handleMessage);
     FirebaseMessaging.onMessageOpenedApp.listen(handleMessage);
     FirebaseMessaging.onBackgroundMessage(handleBackgroundMessage);
     FirebaseMessaging.onMessage.listen((message) {

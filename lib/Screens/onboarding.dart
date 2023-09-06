@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/Screens/LoginScreen.dart';
 import 'package:flutter_application_1/share/local/cache/cache_helper.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -148,7 +149,7 @@ class _OnbordingState extends State<Onbording> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => HomeScreen(),
+                                  builder: (context) => loginSceren(),
                                 ),
                               );
                             }
@@ -185,7 +186,7 @@ class _OnbordingState extends State<Onbording> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => HomeScreen(),
+                                  builder: (context) => loginSceren(),
                                 ),
                               );
                             }

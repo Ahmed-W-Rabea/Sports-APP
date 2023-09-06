@@ -26,18 +26,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final message = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
+      drawer: drawer(context),
       appBar: GradientAppBar(
-        automaticallyImplyLeading: false,
         gradient: const LinearGradient(colors: [
           Color.fromARGB(255, 23, 22, 22),
           Color.fromARGB(255, 28, 28, 35),
         ]),
         elevation: 5,
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu),
-          color: const Color.fromARGB(255, 234, 174, 90),
-        ),
         title: Padding(
           padding: const EdgeInsets.only(left: 38, top: 4),
           child: Row(
