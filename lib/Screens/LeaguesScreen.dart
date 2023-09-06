@@ -1,11 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/teamsScreen.dart';
 import 'package:flutter_application_1/cubits/get_league/get_league_cubit.dart';
 import 'package:flutter_application_1/cubits/get_team/get_team_cubit.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:http/http.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -163,7 +160,7 @@ class LeaguesScreen extends StatelessWidget {
                                           Navigator.of(context).push(
                                             MaterialPageRoute(
                                               builder: (BuildContext context) =>
-                                                  TeamsScreen(),
+                                                  TeamsScreen(index2: i),
                                             ),
                                           );
                                         },
@@ -174,24 +171,9 @@ class LeaguesScreen extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              '${i}',
-                                              style: TextStyle(
-                                                  shadows: const [
-                                                    Shadow(
-                                                      color: Colors.black,
-                                                      offset: Offset(1.0, 1.0),
-                                                    ),
-                                                  ],
-                                                  fontSize: 9.sp,
-                                                  fontFamily: 'RaceSport'),
-                                            ),
-                                            Spacer(
-                                              flex: 1,
-                                            ),
                                             Container(
-                                              height: 45.h,
-                                              width: 45.w,
+                                              height: 40.h,
+                                              width: 40.w,
                                               decoration: BoxDecoration(
                                                 image: DecorationImage(
                                                   image: NetworkImage(
@@ -203,22 +185,27 @@ class LeaguesScreen extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
-                                            Spacer(
-                                              flex: 5,
-                                            ),
-                                            Text(
-                                              state.response.result?[i]
-                                                      .leagueName ??
-                                                  'Null Name',
-                                              style: TextStyle(
-                                                  shadows: const [
-                                                    Shadow(
-                                                      color: Colors.black,
-                                                      offset: Offset(1.0, 1.0),
-                                                    ),
-                                                  ],
-                                                  fontSize: 9.sp,
-                                                  fontFamily: 'RaceSport'),
+                                            const Spacer(),
+                                            SizedBox(
+                                              width: 150.w,
+                                              child: Text(
+                                                state.response.result?[i]
+                                                        .leagueName ??
+                                                    'Null Name',
+                                                textAlign: TextAlign.end,
+                                                maxLines: 1,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    shadows: const [
+                                                      Shadow(
+                                                        color: Colors.black,
+                                                        offset:
+                                                            Offset(1.0, 1.0),
+                                                      ),
+                                                    ],
+                                                    fontSize: 9.sp,
+                                                    fontFamily: 'RaceSport'),
+                                              ),
                                             ),
                                           ],
                                         ),

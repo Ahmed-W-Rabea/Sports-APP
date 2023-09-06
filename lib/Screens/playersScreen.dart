@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/cubits/get_player/get_player_cubit.dart';
+import 'package:flutter_application_1/cubits/get_team/get_team_cubit.dart';
 import 'package:flutter_application_1/used%20widgets/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,32 +29,41 @@ class PlayersScreen extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Padding(
-                padding: EdgeInsets.only(top: 50.h),
-                child: Align(
-                  alignment: Alignment.topCenter,
-                  child: SizedBox(
-                      height: 180.h,
-                      width: 180.w,
-                      child: Image.asset('assets/images/league logo.png')),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 8.h),
-                child: Align(
-                  alignment: Alignment.topCenter,
-                  child: GradientText(
-                    'TEAM NAME',
-                    style: TextStyle(
-                        fontSize: 20.sp,
-                        fontFamily: 'MxRegular',
-                        color: Colors.white),
-                    colors: const [
-                      Color.fromARGB(255, 221, 156, 64),
-                      Color.fromARGB(255, 254, 217, 164),
-                    ],
+              Column(
+                children: [
+                  BlocBuilder<GetTeamCubit, GetTeamState>(
+                    builder: (context, state) {
+                      return Padding(
+                        padding: EdgeInsets.only(top: 50.h),
+                        child: Align(
+                          alignment: Alignment.topCenter,
+                          child: SizedBox(
+                              height: 180.h,
+                              width: 180.w,
+                              child:
+                                  Image.asset('assets/images/league logo.png')),
+                        ),
+                      );
+                    },
                   ),
-                ),
+                  Padding(
+                    padding: EdgeInsets.only(top: 8.h),
+                    child: Align(
+                      alignment: Alignment.topCenter,
+                      child: GradientText(
+                        'TEAM NAME',
+                        style: TextStyle(
+                            fontSize: 20.sp,
+                            fontFamily: 'MxRegular',
+                            color: Colors.white),
+                        colors: const [
+                          Color.fromARGB(255, 221, 156, 64),
+                          Color.fromARGB(255, 254, 217, 164),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
               Padding(
                 padding: EdgeInsets.only(top: 30.h),
@@ -137,8 +147,9 @@ class PlayersScreen extends StatelessWidget {
                                     await context
                                         .read<GetPlayerAnalyticsCubit>()
                                         .getPlayerAnalytics(
-                                            id: cubit.response.result![i]
-                                                .playerKey!);
+                                          id: cubit
+                                              .response.result![i].playerKey!,
+                                        );
 
                                     showPlayerAnaliticsdialog(i, context);
                                   },

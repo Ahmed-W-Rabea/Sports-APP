@@ -125,35 +125,22 @@ class TopScorers extends StatelessWidget {
                                           fontFamily: 'RaceSport'),
                                     ),
                                     const Spacer(
-                                      flex: 1,
+                                      flex: 3,
                                     ),
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          cubit.response.result?[i]
-                                                  .playerName ??
-                                              'null name',
-                                          style: TextStyle(
-                                              shadows: const [
-                                                Shadow(
-                                                  color: Colors.black,
-                                                  offset: Offset(1.0, 1.0),
-                                                ),
-                                              ],
-                                              fontSize: 9.sp,
-                                              fontFamily: 'RaceSport'),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 5),
-                                          child: Text(
+                                    SizedBox(
+                                      width: 150.w,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
                                             cubit.response.result?[i]
-                                                    .teamName ??
+                                                    .playerName ??
                                                 'null name',
+                                            maxLines: 1,
+                                            overflow: TextOverflow.ellipsis,
                                             style: TextStyle(
                                                 shadows: const [
                                                   Shadow(
@@ -161,14 +148,32 @@ class TopScorers extends StatelessWidget {
                                                     offset: Offset(1.0, 1.0),
                                                   ),
                                                 ],
-                                                fontSize: 7.sp,
+                                                fontSize: 9.sp,
                                                 fontFamily: 'RaceSport'),
                                           ),
-                                        ),
-                                      ],
+                                          Padding(
+                                            padding:
+                                                const EdgeInsets.only(top: 5),
+                                            child: Text(
+                                              cubit.response.result?[i]
+                                                      .teamName ??
+                                                  'null name',
+                                              style: TextStyle(
+                                                  shadows: const [
+                                                    Shadow(
+                                                      color: Colors.black,
+                                                      offset: Offset(1.0, 1.0),
+                                                    ),
+                                                  ],
+                                                  fontSize: 7.sp,
+                                                  fontFamily: 'RaceSport'),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                     const Spacer(
-                                      flex: 7,
+                                      flex: 5,
                                     ),
                                     Text(
                                       '${cubit.response.result?[i].goals ?? '-'}',
@@ -183,7 +188,7 @@ class TopScorers extends StatelessWidget {
                                           fontFamily: 'RaceSport'),
                                     ),
                                     const Spacer(
-                                      flex: 3,
+                                      flex: 6,
                                     ),
                                     Text(
                                       '${cubit.response.result?[i].penaltyGoals ?? '-'}',
@@ -198,7 +203,7 @@ class TopScorers extends StatelessWidget {
                                           fontFamily: 'RaceSport'),
                                     ),
                                     const Spacer(
-                                      flex: 3,
+                                      flex: 6,
                                     ),
                                     Text(
                                       '${cubit.response.result?[i].assists ?? '-'}',

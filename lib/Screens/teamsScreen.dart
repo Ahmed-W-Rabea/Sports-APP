@@ -5,7 +5,8 @@ import 'package:flutter_application_1/cubits/get_team/get_team_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TeamsScreen extends StatefulWidget {
-  TeamsScreen({super.key});
+  int index2;
+  TeamsScreen({super.key, required this.index2});
 
   @override
   State<TeamsScreen> createState() => _TeamsScreenState();
@@ -62,8 +63,8 @@ class _TeamsScreenState extends State<TeamsScreen>
               ),
               body: TabBarView(
                 controller: _tabController,
-                children: const [
-                  Teams(),
+                children: [
+                  Teams(index: widget.index2),
                   TopScorers(),
                 ],
               ),

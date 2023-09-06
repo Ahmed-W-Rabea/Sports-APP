@@ -103,13 +103,13 @@ List playerAnalitics = [
 ];
 
 Future showPlayerAnaliticsdialog(int index, context) async {
-  var cubit = BlocProvider.of<GetPlayerAnalyticsCubit>(context);
   return showDialog(
     context: context,
     barrierDismissible: false,
     builder: (BuildContext context) {
       return BlocBuilder<GetPlayerAnalyticsCubit, GetPlayerAnalyticsState>(
         builder: (context, state) {
+          var cubit = BlocProvider.of<GetPlayerAnalyticsCubit>(context);
           return AlertDialog(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
@@ -119,50 +119,61 @@ Future showPlayerAnaliticsdialog(int index, context) async {
             title: Center(
               child: Padding(
                 padding: EdgeInsets.only(top: 10.h),
-                child: Text(
-                  "PLAYER'S ANALITICS",
-                  style: TextStyle(
-                      fontFamily: 'MxRegular',
-                      color: Colors.white,
-                      fontSize: 17.sp),
+                child: GradientText(
+                  'PLAYER ALALYTICTS',
+                  style: TextStyle(fontFamily: 'MxRegular', fontSize: 17.sp),
+                  colors: const [
+                    Color.fromARGB(255, 221, 156, 64),
+                    Color.fromARGB(255, 254, 217, 164),
+                  ],
                 ),
               ),
             ),
             content: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(bottom: 20.h, top: 10.h),
-                  child: SizedBox(
-                      height: 150.h,
-                      width: 150.h,
-                      child: Image.asset('assets/images/logo2.png')),
+                  padding: EdgeInsets.only(bottom: 20.h, top: 9.h),
+                  child: Container(
+                    height: 150.h,
+                    width: 150.w,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          cubit.response!.result![0].playerImage ??
+                              'https://media.istockphoto.com/id/1264074047/vector/breaking-news-background.jpg?s=612x612&w=0&k=20&c=C5BryvaM-X1IiQtdyswR3HskyIZCqvNRojrCRLoTN0Q=',
+                        ),
+                        fit: BoxFit.fitWidth,
+                      ),
+                    ),
+                  ),
                 ),
                 Padding(
-                    padding: EdgeInsets.only(top: 22.h),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            GradientText(
-                              '- Name:  ',
-                              style: TextStyle(
-                                  fontFamily: 'RaceSport', fontSize: 10.sp),
-                              colors: const [
-                                Color.fromARGB(255, 221, 156, 64),
-                                Color.fromARGB(255, 254, 217, 164),
-                              ],
-                            ),
-                            Text(
-                              cubit.response.result?[0].playerName ??
-                                  'Null Name',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontFamily: 'RaceSport',
-                                  fontSize: 10.sp),
-                            ),
-                          ],
-                        ),
-                        /*    Row(
+                  padding: EdgeInsets.only(top: 7.h),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          GradientText(
+                            '- Name:  ',
+                            style: TextStyle(
+                                fontFamily: 'RaceSport', fontSize: 10.sp),
+                            colors: const [
+                              Color.fromARGB(255, 221, 156, 64),
+                              Color.fromARGB(255, 254, 217, 164),
+                            ],
+                          ),
+                          Text(
+                            cubit.response!.result![0].playerName ?? 'Null',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontFamily: 'RaceSport',
+                                fontSize: 10.sp),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 25.h),
+                        child: Row(
                           children: [
                             GradientText(
                               '- Number:  ',
@@ -174,17 +185,183 @@ Future showPlayerAnaliticsdialog(int index, context) async {
                               ],
                             ),
                             Text(
-                              cubit.response.result?[0].playerNumber ??
-                                  'Null Number',
+                              cubit.response!.result![0].playerNumber ?? 'Null',
                               style: TextStyle(
                                   color: Colors.white,
                                   fontFamily: 'RaceSport',
                                   fontSize: 10.sp),
                             ),
                           ],
-                        ),   */
-                      ],
-                    )),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 25.h),
+                        child: Row(
+                          children: [
+                            GradientText(
+                              '- Country:  ',
+                              style: TextStyle(
+                                  fontFamily: 'RaceSport', fontSize: 10.sp),
+                              colors: const [
+                                Color.fromARGB(255, 221, 156, 64),
+                                Color.fromARGB(255, 254, 217, 164),
+                              ],
+                            ),
+                            Text(
+                              cubit.response!.result![0].playerCountry ??
+                                  'Null',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'RaceSport',
+                                  fontSize: 10.sp),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 25.h),
+                        child: Row(
+                          children: [
+                            GradientText(
+                              '- Position:  ',
+                              style: TextStyle(
+                                  fontFamily: 'RaceSport', fontSize: 10.sp),
+                              colors: const [
+                                Color.fromARGB(255, 221, 156, 64),
+                                Color.fromARGB(255, 254, 217, 164),
+                              ],
+                            ),
+                            Text(
+                              cubit.response!.result![0].playerType ?? 'Null',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'RaceSport',
+                                  fontSize: 10.sp),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 25.h),
+                        child: Row(
+                          children: [
+                            GradientText(
+                              '- Age:  ',
+                              style: TextStyle(
+                                  fontFamily: 'RaceSport', fontSize: 10.sp),
+                              colors: const [
+                                Color.fromARGB(255, 221, 156, 64),
+                                Color.fromARGB(255, 254, 217, 164),
+                              ],
+                            ),
+                            Text(
+                              cubit.response!.result![0].playerAge ?? 'Null',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'RaceSport',
+                                  fontSize: 10.sp),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 25.h),
+                        child: Row(
+                          children: [
+                            GradientText(
+                              '- Yellow Cards:  ',
+                              style: TextStyle(
+                                  fontFamily: 'RaceSport', fontSize: 10.sp),
+                              colors: const [
+                                Color.fromARGB(255, 221, 156, 64),
+                                Color.fromARGB(255, 254, 217, 164),
+                              ],
+                            ),
+                            Text(
+                              cubit.response!.result![0].playerYellowCards ??
+                                  'Null',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'RaceSport',
+                                  fontSize: 10.sp),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 25.h),
+                        child: Row(
+                          children: [
+                            GradientText(
+                              '- Red Cards:  ',
+                              style: TextStyle(
+                                  fontFamily: 'RaceSport', fontSize: 10.sp),
+                              colors: const [
+                                Color.fromARGB(255, 221, 156, 64),
+                                Color.fromARGB(255, 254, 217, 164),
+                              ],
+                            ),
+                            Text(
+                              cubit.response!.result![0].playerRedCards ??
+                                  'Null',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'RaceSport',
+                                  fontSize: 10.sp),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 25.h),
+                        child: Row(
+                          children: [
+                            GradientText(
+                              '- Goals:  ',
+                              style: TextStyle(
+                                  fontFamily: 'RaceSport', fontSize: 10.sp),
+                              colors: const [
+                                Color.fromARGB(255, 221, 156, 64),
+                                Color.fromARGB(255, 254, 217, 164),
+                              ],
+                            ),
+                            Text(
+                              cubit.response!.result![0].playerGoals ?? 'Null',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'RaceSport',
+                                  fontSize: 10.sp),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 25.h),
+                        child: Row(
+                          children: [
+                            GradientText(
+                              '- Assists:  ',
+                              style: TextStyle(
+                                  fontFamily: 'RaceSport', fontSize: 10.sp),
+                              colors: const [
+                                Color.fromARGB(255, 221, 156, 64),
+                                Color.fromARGB(255, 254, 217, 164),
+                              ],
+                            ),
+                            Text(
+                              cubit.response!.result![0].playerAssists ??
+                                  'Null',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'RaceSport',
+                                  fontSize: 10.sp),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
             actions: [

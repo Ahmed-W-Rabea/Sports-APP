@@ -11,7 +11,7 @@ class GetPlayerAnalyticsCubit extends Cubit<GetPlayerAnalyticsState> {
 
   GetPlayerAnalytics getPlayerAnalyticsService = GetPlayerAnalytics();
 
-  late GetPlayerAnalyticsModel response;
+  GetPlayerAnalyticsModel? response;
 
   Future getPlayerAnalytics({required int id}) async {
     emit(GetPlayerAnalyticsLoading());
@@ -20,8 +20,10 @@ class GetPlayerAnalyticsCubit extends Cubit<GetPlayerAnalyticsState> {
       await getPlayerAnalyticsService
           .getPlayerAnalytics(playerID: id)
           .then((value) {
+        print(value!.result![0].playerName);
         if (value != null) {
           response = value;
+          print(value.result![0].playerName);
           emit(GetPlayerAnalyticsSuccess());
         } else {
           emit(GetPlayerAnalyticsError());
