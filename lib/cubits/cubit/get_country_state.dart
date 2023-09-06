@@ -8,7 +8,7 @@ final class GetCountryInitial extends GetCountryState {}
 final class GetCountryLoading extends GetCountryState {}
 
 final class GetCountrySuccess extends GetCountryState {
-  final GetNewCountryModel response;
+  final GetCountryModel response;
   GetCountrySuccess({required this.response});
 }
 
