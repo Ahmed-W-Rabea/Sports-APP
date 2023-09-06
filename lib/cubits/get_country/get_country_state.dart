@@ -1,7 +1,9 @@
 part of 'get_country_cubit.dart';
 
 @immutable
-sealed class GetCountryState {}
+sealed class GetCountryState {
+  get response => null;
+}
 
 final class GetCountryInitial extends GetCountryState {}
 

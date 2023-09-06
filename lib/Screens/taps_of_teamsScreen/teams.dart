@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Screens/playersScreen.dart';
+import 'package:flutter_application_1/cubits/get_league/get_league_cubit.dart';
+import 'package:flutter_application_1/cubits/get_player/get_player_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../../cubits/get_team/get_team_cubit.dart';
+
 class Teams extends StatelessWidget {
-  const Teams({super.key});
+  int index;
+  Teams({super.key, required this.index});
 
   @override
   Widget build(BuildContext context) {
+    var cubit = BlocProvider.of<GetTeamCubit>(context);
+
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
@@ -55,32 +63,50 @@ class Teams extends StatelessWidget {
                   ),
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(top: 18.h),
-                child: Align(
-                  alignment: Alignment.topCenter,
-                  child: SizedBox(
-                      height: 180.h,
-                      width: 180.w,
-                      child: Image.asset('assets/images/league logo.png')),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(top: 10.h),
-                child: Align(
-                  alignment: Alignment.topCenter,
-                  child: GradientText(
-                    'LEAGUE NAME',
-                    style: TextStyle(
-                        fontSize: 20.sp,
-                        fontFamily: 'MxRegular',
-                        color: Colors.white),
-                    colors: const [
-                      Color.fromARGB(255, 221, 156, 64),
-                      Color.fromARGB(255, 254, 217, 164),
+              BlocBuilder<GetLeagueCubit, GetLeagueState>(
+                builder: (context, state) {
+                  return Column(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 18.h),
+                        child: Align(
+                          alignment: Alignment.topCenter,
+                          child: Container(
+                            height: 180.h,
+                            width: 180.w,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                  state.response.result?[index].leagueLogo ??
+                                      'https://media.istockphoto.com/id/1264074047/vector/breaking-news-background.jpg?s=612x612&w=0&k=20&c=C5BryvaM-X1IiQtdyswR3HskyIZCqvNRojrCRLoTN0Q=',
+                                ),
+                                fit: BoxFit.fitWidth,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: 10.h),
+                        child: Align(
+                          alignment: Alignment.topCenter,
+                          child: GradientText(
+                            state.response.result?[index].leagueName ??
+                                'Null Name',
+                            style: TextStyle(
+                                fontSize: 20.sp,
+                                fontFamily: 'MxRegular',
+                                color: Colors.white),
+                            colors: const [
+                              Color.fromARGB(255, 221, 156, 64),
+                              Color.fromARGB(255, 254, 217, 164),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
-                  ),
-                ),
+                  );
+                },
               ),
               Padding(
                 padding: EdgeInsets.only(top: 20.h),
@@ -98,7 +124,7 @@ class Teams extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 20.h),
                 child: SizedBox(
-                  height: 300.h,
+                  height: 259.h,
                   child: Expanded(
                     child: GridView.count(
                       crossAxisCount: 2,
@@ -106,9 +132,12 @@ class Teams extends StatelessWidget {
                       crossAxisSpacing: 17,
                       mainAxisSpacing: 17,
                       children: [
-                        for (int i = 0; i < 21; i++)
+                        for (int i = 0; i < cubit.response.result!.length; i++)
                           InkWell(
                             onTap: () {
+                              context.read<GetPlayerCubit>().getPlayer(
+                                  id: cubit.response.result![i].teamKey!);
+
                               Navigator.push(
                                 context,
                                 MaterialPageRoute<void>(
@@ -129,16 +158,25 @@ class Teams extends StatelessWidget {
                                 ),
                               ),
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  SizedBox(
+                                  Container(
                                     height: 75.h,
                                     width: 75.w,
-                                    child: Image.asset(
-                                      'assets/images/foot_ball.jpg',
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: NetworkImage(
+                                          cubit.response.result![i].teamLogo ??
+                                              'https://media.istockphoto.com/id/1264074047/vector/breaking-news-background.jpg?s=612x612&w=0&k=20&c=C5BryvaM-X1IiQtdyswR3HskyIZCqvNRojrCRLoTN0Q=',
+                                        ),
+                                        fit: BoxFit.fitWidth,
+                                      ),
                                     ),
                                   ),
                                   Text(
-                                    'flag name',
+                                    cubit.response.result![i].teamName ??
+                                        'Null Name',
+                                    textAlign: TextAlign.center,
                                     style: TextStyle(
                                         shadows: const [
                                           Shadow(
