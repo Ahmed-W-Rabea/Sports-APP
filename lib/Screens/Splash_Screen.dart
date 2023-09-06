@@ -89,7 +89,7 @@ class _SplashScreenState extends State<SplashScreen>
               ),
               Image.asset("assets/images/logo.png"),
               const Text(
-                "SPORTIANO",
+                "Sport Pulse",
                 style: TextStyle(
                     fontFamily: "MxRegular", color: Colors.white, fontSize: 30),
               ),
